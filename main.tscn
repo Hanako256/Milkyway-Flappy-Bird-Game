@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxd2kqtvbqtln"]
+[gd_scene load_steps=7 format=3 uid="uid://dxd2kqtvbqtln"]
 
 [ext_resource type="Script" uid="uid://b44m7e2hf0mxh" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bpi0lsduab1r4" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c2ojjhe7qgyg6" path="res://block.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c2opd5ot2w7vf" path="res://hud.tscn" id="4_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(1168, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1161, 20)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_1bvp3")
@@ -19,7 +23,20 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="TopWall" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(574, -11)
+position = Vector2(582, -25)
 shape = SubResource("RectangleShape2D_h2yge")
 
+[node name="BottomWall" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(576, 675)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Stopwatch" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(565, 342)
+
+[connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="BlockTimer" to="." method="_on_timeout"]
+[connection signal="timeout" from="Stopwatch" to="." method="_on_stopwatch_timeout"]

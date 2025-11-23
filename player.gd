@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var jumpStrength = 200
 var screenSize
@@ -12,6 +13,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_released("jump"):
 		$Animation.play("jump")
+		#print($Animation.position.y)
 		velocity.y = -jumpStrength
 		$AnimationTimer.start(0.5)
 	else:
@@ -29,3 +31,13 @@ func _process(delta):
 
 func _on_animation_timeout():
 	$Animation.play("default")
+
+func _on_area_entered(body):
+	hide()
+	hit.emit()
+	$Collisions.set_deferred("disabled", true)
+
+func start(pos):
+	position = pos
+	show()
+	$Collisions.disabled = false
