@@ -1,6 +1,6 @@
 extends Node2D
 @export var block_scene: PackedScene
-@export var frequency = 1
+@export var frequency = 3
 
 func _ready():
 	$BlockTimer.wait_time = frequency
@@ -11,11 +11,13 @@ func _process(delta):
 
 func _on_timeout():
 	var block = block_scene.instantiate()
-	block.position.x = 500
-	block.position.y = 0
+	var block2 = block_scene.instantiate()
+	var spawn_y = 0
+	block.position.x = 700
+	block.position.y = spawn_y
+	block2.position.x = 700
+	block2.position.y = -500
 	#block.position = $Player/Animation.position
 	$BlockTimer.start()
 	add_child(block)
-
-func _block_mover(block):
-	block.position.x -= 5
+	add_child(block2)

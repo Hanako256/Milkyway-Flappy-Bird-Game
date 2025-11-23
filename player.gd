@@ -1,20 +1,21 @@
 extends Area2D
 
-@export var jumpStrength = 2000
+@export var jumpStrength = 200
 var screenSize
+var velocity
 
 func _ready():
 	screenSize = get_viewport_rect().size
 	$Animation.play("default")
+	velocity = (Vector2.ZERO)
 
 func _process(delta):
-	var velocity = (Vector2.ZERO)
 	if Input.is_action_just_released("jump"):
 		$Animation.play("jump")
 		velocity.y = -jumpStrength
 		$AnimationTimer.start(0.5)
 	else:
-		velocity.y = 50
+		velocity.y += (jumpStrength * 1.5) * delta
 		
 	#if velocity.y < 0:
 		#$Animation.play("jump")
@@ -22,6 +23,7 @@ func _process(delta):
 	#else:
 		#$Animation.play("default")
 	position += velocity * delta
+	#print(velocity.y)
 	#position = position.clamp(Vector2.ZERO, screenSize)
 
 
