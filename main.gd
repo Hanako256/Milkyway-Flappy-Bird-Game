@@ -12,7 +12,6 @@ func _ready():
 func _process(delta):
 	#_block_mover()
 	if Input.is_action_just_released("restart"):
-		print("hi")
 		new_game()
 
 func _on_timeout():
@@ -28,7 +27,6 @@ func _on_timeout():
 		block.scale_y = 25
 		block2.scale_y = 25
 	
-	$BlockTimer.start()
 	add_child(block)
 	add_child(block2)
 
@@ -37,8 +35,11 @@ func _on_stopwatch_timeout():
 	$HUD.update_score(score)
 	
 func new_game():
+	ded = false
 	$HUD/ScoreLabel.text = "0"
 	score = 0
+	$Player.velocity.x = 0
+	$Player.velocity.y = 0
 	$Player.start($StartPosition.position)
 	$Stopwatch.start()
 	$BlockTimer.start()
