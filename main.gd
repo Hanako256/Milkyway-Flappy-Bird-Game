@@ -13,6 +13,10 @@ func _process(delta):
 	#_block_mover()
 	if Input.is_action_just_released("restart"):
 		new_game()
+	if($Background.position.x <= -950):
+		$Background.position.x = 2500
+	else:
+		$Background.position.x -= 5
 
 func _on_timeout():
 	var block = block_scene.instantiate()

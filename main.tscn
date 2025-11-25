@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxd2kqtvbqtln"]
+[gd_scene load_steps=8 format=3 uid="uid://dxd2kqtvbqtln"]
 
 [ext_resource type="Script" uid="uid://b44m7e2hf0mxh" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bpi0lsduab1r4" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c2ojjhe7qgyg6" path="res://block.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c2opd5ot2w7vf" path="res://hud.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dhg5wfqxhl28p" path="res://sprites/Background.png" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(1168, 20)
@@ -14,6 +15,10 @@ size = Vector2(1161, 20)
 [node name="main" type="Node2D"]
 script = ExtResource("1_1bvp3")
 block_scene = ExtResource("2_h2yge")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(2500, 324)
+texture = ExtResource("5_lquwl")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 
