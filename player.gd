@@ -12,6 +12,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("jump"):
+		$JumpSound.play()
 		$Animation.play("jump")
 		#print($Animation.position.y)
 		velocity.y = -jumpStrength

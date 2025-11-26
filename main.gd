@@ -26,6 +26,8 @@ func _process(delta):
 		$HUD/ScoreLabel.label_settings.font_color = Color.SKY_BLUE
 	elif (score < 50):
 		$HUD/ScoreLabel.label_settings.font_color = Color.LAWN_GREEN
+		
+		
 	elif (score < 100):
 		$HUD/ScoreLabel.label_settings.font_color = Color.YELLOW
 	else:
