@@ -8,6 +8,8 @@ var high_score = 0
 func _ready():
 	$BlockTimer.wait_time = frequency
 	$Stopwatch.start()
+	$LevelTheme.play()
+	$HUD/ScoreLabel.label_settings.font_size = 60
 
 func _process(delta):
 	#_block_mover()
@@ -17,6 +19,17 @@ func _process(delta):
 		$Background.position.x = 2500
 	else:
 		$Background.position.x -= 5
+	
+	if(score < 10):
+		$HUD/ScoreLabel.label_settings.font_color = Color.GHOST_WHITE
+	elif(score < 20):
+		$HUD/ScoreLabel.label_settings.font_color = Color.SKY_BLUE
+	elif (score < 50):
+		$HUD/ScoreLabel.label_settings.font_color = Color.LAWN_GREEN
+	elif (score < 100):
+		$HUD/ScoreLabel.label_settings.font_color = Color.YELLOW
+	else:
+		$HUD/ScoreLabel.label_settings.font_color = Color.CRIMSON
 
 func _on_timeout():
 	var block = block_scene.instantiate()
@@ -48,6 +61,7 @@ func new_game():
 	$Stopwatch.start()
 	$BlockTimer.start()
 	$HUD/HighScore.text = "High Score: " + str(high_score)
+	$LevelTheme.play()
 
 func game_over():
 	ded = true
@@ -56,3 +70,5 @@ func game_over():
 	$Stopwatch.stop()
 	$BlockTimer.stop()
 	$HUD/ScoreLabel.text = "GAME OVER\nPress ENTER to try again"
+	$LevelTheme.stop()
+	$DeathSong.play()

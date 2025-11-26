@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2i6cvx4hpbja"
+path="res://.godot/imported/2025-11-26 Funky Beat (cropped badly).mp3-1422b174cb50f64decd94d4093642b7c.mp3str"
+
+[deps]
+
+source_file="res://audio/2025-11-26 Funky Beat (cropped badly).mp3"
+dest_files=["res://.godot/imported/2025-11-26 Funky Beat (cropped badly).mp3-1422b174cb50f64decd94d4093642b7c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

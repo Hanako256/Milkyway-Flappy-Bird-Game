@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2opd5ot2w7vf"]
+[gd_scene load_steps=3 format=3 uid="uid://c2opd5ot2w7vf"]
 
 [ext_resource type="Script" uid="uid://rlxxxlp4dg0y" path="res://hud.gd" id="1_37p78"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_37p78"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -13,8 +15,9 @@ offset_left = -304.5
 offset_right = 304.5
 offset_bottom = 163.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 200
 text = "0"
+label_settings = SubResource("LabelSettings_37p78")
 horizontal_alignment = 1
 
 [node name="HighScore" type="Label" parent="."]

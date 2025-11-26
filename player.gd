@@ -11,7 +11,7 @@ func _ready():
 	velocity = (Vector2.ZERO)
 
 func _process(delta):
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_pressed("jump"):
 		$Animation.play("jump")
 		#print($Animation.position.y)
 		velocity.y = -jumpStrength
