@@ -71,6 +71,6 @@ func game_over():
 		high_score = score
 	$Stopwatch.stop()
 	$BlockTimer.stop()
-	$HUD/ScoreLabel.text = "GAME OVER\nPress ENTER to try again"
+	$HUD/ScoreLabel.text = "GAME OVER\nPress ENTER (or RT on controller)\nto try again"
 	$LevelTheme.stop()
 	$DeathSong.play()
